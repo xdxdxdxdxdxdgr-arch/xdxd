@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primera página</title>
+  <style>
+    body {
+      background-image: url("huevadas.jpg");
+      background-size: cover;
+    }
+
+    #entrada {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #entrada button {
+      font-size: 24px;
+      padding: 15px 30px;
+      cursor: pointer;
+    }
+
+    .screamer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      background-image: url("susto.jpg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div id="entrada">
+    <button id="boton">Entrar</button>
+  </div>
+
+  <div class="screamer" id="susto"></div>
+
+  <div id="contenido" style="display: none;">
+    <h1>Hola, mundo</h1>
+    <p>dylan que te parece esta huevada ke kree por mandarme a dolmir pero me desperte como genio</p>
+  </div>
+
+  <audio id="sonido" src="grito.wav" preload="auto"></audio>
+  <audio id="relajante" src="sonido.ogg" loop preload="auto"></audio>
+
+  <script>
+    document.getElementById("boton").addEventListener("click", function () {
+      document.getElementById("entrada").style.display = "none";
+      document.getElementById("susto").style.display = "block";
+      document.getElementById("sonido").play();
+
+      setTimeout(function () {
+        document.getElementById("susto").style.display = "none";
+        document.getElementById("contenido").style.display = "block";
+        document.getElementById("relajante").play();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
